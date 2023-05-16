@@ -1,0 +1,76 @@
+html {
+  background-image: radial-gradient(white, #0073e6);
+}
+header {
+  background-color: #0080ff;
+  height:100px;
+  text-align: center;
+  color: white;
+  font-size: 150%;
+}
+.center {width: 900px; margin: 0 auto; margin-top: 150px;}        
+
+#panel {
+  width: 400px; 
+  margin: 0 auto; 
+  padding: 0; 
+  background: radial-gradient(white 80%, lightblue);
+  border: 1px solid black;
+  font: 16px calibri;
+  padding: 15px 0 0;
+  -webkit-box-shadow: 0 0 2px silver; 
+  -moz-box-shadow: 0 0 2px silver; 
+  box-shadow: 0 0 10px black; 
+}
+form {margin: 0;}
+label {
+  display: block;
+  width: 260px;
+  padding: 10px 20px;
+  color: black;
+  font-size: 16px;
+  text-shadow: 0 0 1px silver;
+  font-weight: bold;
+}
+#username, #password {
+  font-size: 22px;
+  display: block;
+  width: 360px; 
+  margin: 0 auto;
+  padding: 10px 5px;
+  border: 1px solid navy;
+  outline: 3px solid lightblue;
+}
+#username:focus, #password:focus {
+  outline: 3px solid #66b3ff;
+}
+button{
+  width: 62px;
+  border: 2px solid black;
+  color: white;
+  text-shadow: 0 0 1px black;
+  background:  #66b3ff;
+  position: relative;
+  left: 170px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#panel, button {
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+}
+h1 {
+  text-align: center;
+  font-size: 500%;
+  color: white;
+  font-family: calibri;
+}
+h2 {
+  text-align: center;
+  font-size: 250%;
+  color: white;
+  font-family: calibri;
+}
