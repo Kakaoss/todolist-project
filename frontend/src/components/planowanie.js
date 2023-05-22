@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import './planer.css';
+import { useNavigate } from "react-router-dom";
+
 
 function Planer(){
-    const [data, setData] = useState([])
-    useEffect(()=> {
-        fetch('http://localhost:8081/uzytkownicy')
-        .then(res => res.json())
-        .then(data=> setData(data))
-        .catch(err => console.log(err));
-    }, [])
+    const [name,setName] = useState('')
+    const navigate = useNavigate()
 
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:8081/')
+        .then((res) => {
+            if(res.data.valid){
+                setName(res.data.login);
+            } else{
+                navigate('/')
+            }
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, [])
     return(
         <div>
         <h1>Panel planowania</h1>
-        <table>
-        {data.map((d, i) => (
-            <tr key={i}>
-                <td>{d.id}</td>
-                <td>{d.login}</td>
-                <td>{d.haslo}</td>
-            </tr>
-        ))}
-        </table>
     <section id="lewy">
         <h2>Do wykonania</h2>
     </section>

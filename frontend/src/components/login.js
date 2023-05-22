@@ -1,23 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./logowanie.css"
-function Zaloguj(){
-    let login = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let correctp = "123";
-    let correctl = "abc";
-    
-    if(login === "" || password === ""){
-        alert("Oba pola musza byc uzupelnione");
-    }
-    else if(login !== correctl && password !== correctp){
-        alert("Błędny login albo hasło");
-    }
-    else if(login === correctl && password === correctp){
-        alert("Witamy");
-        window.location.replace('/planer')
-    }
-}
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import Validation from "./loginValidation";
+
 function Logowanie(){
+    const[values, setValues] = useState({
+        login: '',
+        haslo: ''
+    })
+
+    const navigate = useNavigate();
+
+    const[errors, setErrors] = useState({})
+
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:8081/')
+        .then((res) => {
+            if(res.data.valid){
+                navigate('/planer')
+            } else{
+                navigate('/')
+            }
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, [])
+
+    const handleInput = (event) => {
+        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors(Validation(values));
+        if(errors.login === "" && errors.haslo === ""){
+            axios.post('http://localhost:8081/uzytkownicy', values)
+            .then((res) => {
+                if(res.data.Logowanie) {
+                    navigate('/planer');
+                }else{
+                    console.log("No record existed");
+                }
+                console.log(res);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }  
+    }
+
     return(
         <div className="logowanie">
         <h1>AMW</h1>
@@ -25,11 +58,16 @@ function Logowanie(){
   <div class="center">
 
   <div id="panel">
-          <label for="username">Nazwa użytkownika:</label>
-          <input type="text" id="username" name="username"/>
-          <label for="password">Hasło:</label>
-          <input type="password" id="password" name="password"/>
-          <button id="btnlogin" onClick={Zaloguj} >Zaloguj</button>
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="login" onChange={handleInput}/>
+            {errors.login && <span className="text-danger">{errors.login}</span>}
+            <label htmlFor="password">Hasło:</label>
+            <input type="password" id="password" name="haslo" onChange={handleInput}/>
+            {errors.haslo && <span className="text-danger">{errors.haslo}</span>}
+            <br/>
+            <button id="btnlogin" type="Submit">Zaloguj</button>
+          </form>
       </div>
   </div>
 </div>
