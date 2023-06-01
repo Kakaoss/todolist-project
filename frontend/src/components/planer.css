@@ -1,29 +1,189 @@
-body {
-    background-image: radial-gradient(white, #0073e6);
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    position:fixed;
+    overflow:auto;
+    font-weight: bold;
     font-family: calibri;
 }
-header, footer{
-    text-align: center;
-    font-size: 150%;
-    color: white;
-    clear:both;
+
+.gora {
+    width: 100%;
+    display:flex;
+    align-content: center;
+    height: 30%;
 }
-#lewy {
-    float: left;
+.gora div {
+    background-color: aqua;
+    align-items: center;
+}
+.gora p {
+    margin: 10px;
+    font-size: 125%;
+}
+.wylogujbtn {
+    border: 1px solid black;
+    margin-left: 380px;
+    margin-bottom: 20px;
+    -webkit-transform: scale(1.2);
+}
+.lheader {
+    border: 5px solid black;
+    width: 25%;
+}
+.sheader {
+    width: 50%;
+    border: 5px solid black;
     text-align: center;
+}
+.pheader {
+    border: 5px solid black;
+    width: 25%;
     color: black;
-    width:35%;
+    text-align: center;
+}
+.glowne {
+    width: 100%;
+    display:flex;
+    align-content: center;
+    height: 91%;
+    text-align: center;
+}
+.lmain {
+    border: 5px solid black;
+    width: 25%;
+    text-align: center;
+    font-weight: bold;
+    font-family: calibri;
+
+}
+.smain {
+    border: 5px solid black;
+    width: 50%;
+}
+.pmain {
+    border: 5px solid black;
+    width: 25%;
+}
+input[type="checkbox"] {
+    display: inline-block;
+    -webkit-transform: scale(1.1);
+    margin-left: 8px;
+}
+h3 {
+    display: inline-block;
+}
+.notki {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.not1, .not2, .not3, .not4, .not5, .not6, .not7, .not8, .not9, .not10, .not11, .not12, .not13, .not14, .not15, .not16, .not17, .not18, .not19,
+.not20, .not21, .not22, .not23, .not24, .not25, .not26, .not27, .not28, .not29,
+.not30, .not31, .not32, .not33, .not34, .not35, .not36, .not37, .not38, .not39,
+.not40, .not41, .not42, .not43, .not44, .not45, .not46, .not47, .not48, .not49 {
+    border: 3px solid;
+    width: 270px;
+    height: 133px; 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 90%;
+    margin-top: 0px;
+    background-color: #5cadf0;
+}
+.nazwazad {
+align-self: flex-start;
+margin-top: 1%;
+margin-left: 1%;
+}
+.opiszad {
+    align-self: flex-start;
+    margin-left: 1%;
+
+}
+.dolnot { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+.dataupl {
+    margin-left: 1%;
+    margin-bottom: 0px;
+}
+.nrsali {
+    margin-bottom: 0px;
+}
+.uzytkownikp {
+    margin-right: 5%;
+    margin-bottom: 0px;
 }
 
-#prawy{
-    float: left;
-    text-align: center;
-    color: white;
-    width:35%;
+progress {
+    margin-top: 80px;
 }
-#srodkowy{
-    float: left;
-    text-align: center;
-    color: white;
-    width:30%;
+.dodajbtn {
+    margin-bottom: 20px;
+    -webkit-transform: scale(1.2);
+}
+
+.container{
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.notes-list{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+}
+
+.note.new {
+    background-color:aquamarine;
+}
+
+textarea{
+    border: none;
+    resize: none;
+    background-color:aquamarine;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+.save{
+    background-color: gray;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+}
+
+.save:hover{
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.note {
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: pre-wrap;
+}
+
+.note-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

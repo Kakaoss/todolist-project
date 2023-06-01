@@ -33,31 +33,50 @@ function Logowanie(){
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         setErrors(Validation(values));
         if(errors.login === "" && errors.haslo === ""){
-            axios.post('http://localhost:8081/uzytkownicy', values)
+            await axios.post('http://localhost:8081/uzytkownicy', values)
             .then((res) => {
-                if(res.data.Logowanie) {
+                console.log(res.data); // Sprawdź, co jest zwracane przez serwer
+                if (res.data.Logowanie) {
                     navigate('/planer');
-                }else{
-                    console.log("No record existed");
+                } else {
+                    console.log("Brak odpowiednich rekordów");
                 }
-                console.log(res);
             }).catch((err) => {
                 console.log(err);
             });
         }  
     }
 
+    const handleSubmitt = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:8081/signup', values)
+        .then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }
+
     return(
         <div className="logowanie">
         <h1>AMW</h1>
         <h2>Logowanie</h2>
-  <div class="center">
+  <div className="center">
 
   <div id="panel">
+
+        {/* <form onSubmit={handleSubmitt}>
+        <label htmlFor="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="login" onChange={handleInput}/>
+            <label htmlFor="password">Hasło:</label>
+            <input type="password" id="password" name="haslo" onChange={handleInput}/>
+            <button id="btnlogin" type="Submit">stworz</button>
+        </form> */}
+
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Nazwa użytkownika:</label>
             <input type="text" id="username" name="login" onChange={handleInput}/>
